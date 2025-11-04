@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupe_s - Professional SMS Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>💎 Dupe_s</h1>
+            <p>Professional SMS Management Platform</p>
+        </div>
+        
+        <!-- API Setup -->
+        <div class="api-setup">
+            <h2>API Configuration</h2>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Account SID</label>
+                    <input type="text" id="accountSid" placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+                </div>
+                <div class="input-group">
+                    <label>Auth Token</label>
+                    <input type="password" id="authToken" placeholder="Your auth token">
+                </div>
+                <button class="btn-primary" id="loadBtn" onclick="loadNumbers()">Reload Numbers</button>
+            </div>
+            <div id="alert"></div>
+            <p style="margin-top: 15px; font-size: 13px; color: var(--gray-600);">
+                💡 Demo mode is active - showing sample conversations from multiple contacts
+            </p>
+        </div>
+        
+        <!-- Phone Numbers Profiles -->
+        <div class="phone-profiles" id="phoneProfiles">
+            <!-- Profile cards for each phone number will be added here -->
+        </div>
+        
+        <!-- Selected Number View -->
+        <div class="selected-number-view" id="selectedNumberView" style="display: none;">
+            <div class="number-header">
+                <div class="number-info">
+                    <h2 id="selectedNumberName"></h2>
+                    <p id="selectedNumber"></p>
+                    <div class="number-stats" id="numberStats"></div>
+                </div>
+                <button class="back-btn" onclick="backToProfiles()">← Back to Profiles</button>
+            </div>
+            
+            <!-- Chat Threads -->
+            <div class="chat-threads-container">
+                <div class="threads-sidebar">
+                    <h3>Message Threads</h3>
+                    <div class="threads-list" id="threadsList">
+                        <!-- Individual thread contacts will be added here -->
+                    </div>
+                </div>
+                
+                <div class="thread-chat">
+                    <div class="thread-header">
+                        <h3 id="threadContactName">All Messages</h3>
+                        <p id="threadContactNumber"></p>
+                    </div>
+                    <div class="messages-area" id="threadMessages">
+                        <!-- Messages for selected thread will be displayed here -->
+                    </div>
+                    <div class="thread-input-area">
+                        <textarea 
+                            class="message-input" 
+                            id="threadMessageInput"
+                            placeholder="Type a message..."
+                            rows="1"
+                            onkeypress="handleThreadKeyPress(event)"
+                        ></textarea>
+                        <button class="send-btn" onclick="sendThreadMessage()">➤</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
